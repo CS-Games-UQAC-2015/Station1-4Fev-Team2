@@ -22,18 +22,33 @@ def getFileData():
     
     return cases
 
-# Separate list in chunks of n length
+# Separates list l in chunks of n length
 # Returns a list of lists, each sublist having n length
 def chunks(l, n):
     n = max(1, n)
     return [l[i:i + n] for i in range(0, len(l), n)]
 
+# LOLOLOL YA RIEN DE FAIT
+def resolveCase(case, flips):
+    for outlet in case['initial']:
+        # Si le outlet est pas dans les targets, on a pas encore la solution 
+        if case['target'].find(outlet) == -1:
+            # Récursion ici: flipper qqch...
+            # JE SAIS PAS BRO JE COMPRENDS RIENERINO
+            # SARRY
+            return resolveCase(SOMETHING, flips+1)
+        
+        # Si tous les initials existent dans le target, on a la bonne solution donc on arrête de flipper
+        return flips
 
 def main():
     data = getFileData()
-     
-    print data
+    # print data
 
+    for i in range(len(data)):
+        case = data[i]
+        answer = resolveCase(case, 0)
+        print ("Case #" + i + ": " + answer)
     
 if __name__ == "__main__":
     main()
